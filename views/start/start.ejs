@@ -29,12 +29,14 @@
           
           <!-- remove selected item from the array and re run -->
           <div class="resultLinks col-12" id="resLinks">
-            <a href="#"  id="reRoll" class="card-link">Lets try again...</a>
             <form action="/results" id="goForm" method="POST">
               <input type="hidden" id="answer" name="choice" value="">
               <!-- <input type="submit" id="go" class="btn btn-secondary"> -->
               <a href="#" id="go" class="card-link">Get directions</a>
+              <a href="#"  id="reRoll" class="card-link">Lets try again...</a>
+
             </form>
+            
           </div>
         
         </div>
@@ -58,7 +60,10 @@
     </ul>
     <div>
     </div>
-    <p>Let the machine monkeys make that hard decision easy for you...</p>
+    <div id="bottomText" class="col-12">
+          <p>Let the machine monkeys make that hard decision easy for you...</p>
+    </div>
+
     </div>
 </div>
 

@@ -59,6 +59,31 @@ left: 100px;
     margin-top: 20px;
     justify-content: center;  
   }
+  
+  #resLinks{
+    justify-content: center;
+    margin: .25em;
+  }
+  #go{
+    display: block;
+    padding: 1em;
+    margin: .25em;
+    background-color: #c8d8e0;
+    float: left;
+font-size: 1em;
+  }
+  #reRoll{
+    display: block;
+    padding: 1em;
+    margin: .25em;
+    float: right;
+    font-size: 1em;
+    background-color: #c8d8e0;
+
+  }
+  #bottomText{
+    height: 5em;
+  }
   .mapDiv{
     justify-content: center;
     display: flex;
@@ -73,7 +98,7 @@ left: 100px;
   .results{
     height: 20em;
     top: -2em;
-    margin-top: .25em;
+    margin: .25em;
 
    }
   #map{
@@ -82,6 +107,12 @@ left: 100px;
   }
   h2 {
     font-size: 1.8em;
+  }
+  #goBackBtn{
+    margin: 0;
+    padding: 1.25em;
+    margin: 3em 1em 3em 1em;  
+  
   }
 }
 
