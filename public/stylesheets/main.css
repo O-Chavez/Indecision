@@ -54,6 +54,13 @@ left: 100px;
     padding: 1em 1em 0 1em;
     height: 100%;
   }
+  #titleBanner{
+    padding: 1em;
+    height: 13em;
+  }
+  #bottomTxtAndButton{
+    padding: 1em;
+  }
   #mainCard{
     display: flexbox;
     margin-top: 20px;
@@ -112,7 +119,6 @@ font-size: 1em;
     margin: 0;
     padding: 1.25em;
     margin: 3em 1em 3em 1em;  
-  
   }
 }
 
