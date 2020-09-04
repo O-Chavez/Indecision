@@ -1,0 +1,89 @@
+body {
+  background-color: #455c66;
+}
+
+.resultHeader {
+display: none;
+}
+
+.ulList {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.jumbotron{
+    margin: auto;
+    margin-top: 10%;
+}
+
+#resLinks{
+display: flex;
+height: 100%;
+
+}
+
+.card-link{
+  padding-left: 2em;
+  font-size: 1.5em;
+}
+
+#mainCard {
+justify-content: center;
+}
+
+.card-body{
+justify-content: center;}
+
+.resultCard1{
+left: 100px;
+}
+
+
+#listText{
+  right: 9em;
+  border-radius: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .jumbotron{
+    width: 100%;
+    margin: 20% 0 20% 0;
+    padding: 1em 1em 0 1em;
+    height: 100%;
+  }
+  #mainCard{
+    display: flexbox;
+    margin-top: 20px;
+    justify-content: center;  
+  }
+  .mapDiv{
+    justify-content: center;
+    display: flex;
+    height: 15em;
+    top: -2.7em;
+  }
+  .title{
+    height: 15%;
+    top: -0.5em;
+    padding-top: 1em;
+  }
+  .results{
+    height: 20em;
+    top: -2em;
+    margin-top: .25em;
+
+   }
+  #map{
+    width: 100%;
+    height: 100%;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+
+

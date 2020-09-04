@@ -1,0 +1,161 @@
+<%- include("../partials/header") %> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+<div class="container-fluid row-lg-12 col-lg-8 col-sm-12">
+  <div  class="jumbotron col-lg-8 col-sm-12 ">
+    <div class="container-fluid" id="mainCard">
+
+      <div id="startingHeader">
+        <h1 class="display-4">Let's get Started!</h1>
+        <p class="lead">Enter the places you are deciding between below...</p>
+      </div>
+
+
+      <div id="result" class="resultHeader">
+        <div class="row">
+          <div class="col-12">
+            <h1 id="resultTitle">Looks like its </h1>
+          <h6 class="card-subtitle mb-2 text-muted result">Not really feeling that one?</h6>
+          <p class="card-text">We can always count this one out and go again...</p>
+          <hr>
+          </div>
+          
+
+          <!-- send result as a string to google maps api with yelp and display results. -->
+          
+          <!-- remove selected item from the array and re run -->
+          <div class="resultLinks col-12" id="resLinks">
+            <a href="#"  id="reRoll" class="card-link">Lets try again...</a>
+            <form action="/results" id="goForm" method="POST">
+              <input type="hidden" id="answer" name="choice" value="">
+              <!-- <input type="submit" id="go" class="btn btn-secondary"> -->
+              <a href="#" id="go" class="card-link">Get directions</a>
+            </form>
+          </div>
+        
+        </div>
+        
+  
+      </div>
+    
+    <hr class="my-4">
+
+    <div class="input-group mb-3" id="searchBar">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" >Let's Decide!</button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
+      </div>
+        <input type="text" name="places" class="form-control" placeholder="Sushi, tacos, burgers..." aria-label="Example text with button addon" aria-describedby="button-addon1" maxlength="40">
+    </div>
+    
+    <!-- list for visible choices -->
+
+    <ul>
+    </ul>
+    <div>
+    </div>
+    <p>Let the machine monkeys make that hard decision easy for you...</p>
+    </div>
+</div>
+
+</div>
+
+<script>
+  var randomNum = []
+  var data = []
+// add item to decison list from input
+$("input[type='text']").keypress(function(event){
+  if(event.which === 13 ){
+    var decisionList = $(this).val();
+    // add item as an li
+    $(this).val("");
+    $("ul").append("<li>" + decisionList + "</li>")
+    data.push(decisionList)
+  }
+});
+
+$('button[id=button-addon2]').click(function(){
+  var decisionList = $("input[type='text']").val();
+  
+    // add item as an li
+    $("input[type='text']").val("");
+    $("ul").append("<li>" + decisionList + "</li>")
+    data.push(decisionList)
+})
+
+var result = [];
+
+// LETS DECIDE button --- on button click, generate random number with a max of data.length and render it as an index of the origional data
+$('button[id=button-addon1]').click(function(){
+      randomNum = Math.floor(Math.random()* data.length)
+      // alert(data[randomNum])
+      result = data[randomNum]
+
+      // remove the ul from view
+      $("ul").addClass("ulList")
+
+      if(data.length >= 1){
+        // add the result to the result card
+        // visual title
+      $("h1[id='resultTitle']").append(result + "!");
+        // add value to input field
+      $("input[id='answer']").val(result);
+      // make result card visible
+      $("div[id='result']").toggleClass("resultHeader")
+
+    // make innitial title card invisible
+    $("div[id='startingHeader']").toggleClass("hidden")
+    // make search bbar and button invisible
+    $("div[id='searchBar']").toggleClass("hidden")
+    } else {
+      alert('BRRRRAANNG. Ya goota put more things in the jimmy jam.')
+    }
+      
+
+
+});
+
+
+
+$('a[id="reRoll"]').click(function(){
+  // remove the index of the decison list previously rolled
+  if(data.length <= 1){
+      alert("nothin left to remove!")
+    } else {
+    // take out skipped index
+    data.splice(randomNum, 1);
+  console.log(data)
+  // randomly select another item from the updated list
+  randomNum = Math.floor(Math.random()* data.length)
+
+      // fill rsult into text form
+      result = data[randomNum]
+      $("input[id='answer']").val(result);
+
+  // clear previous displayed result
+      $("h1[id='resultTitle']").empty()
+  // upadte rsult card
+    $("h1[id='resultTitle']").prepend(result + "!");
+    // give the a tag in the main form the value of the result
+
+
+    if(data.length <= 1){
+      $("h6[class='card-subtitle mb-2 text-muted']").empty("");
+      $("h6[class='card-subtitle mb-2 text-muted']").append("Nothin left to remove!");
+    }  
+    }
+
+   
+
+})
+ document.getElementById("go").onclick = function() {
+    document.getElementById("goForm").submit();
+}
+
+</script>
+
+<%- include("../partials/footer") %> 
