@@ -73,7 +73,7 @@ left: 100px;
   }
   #go{
     display: block;
-    padding: 1em;
+    padding: .75em;
     margin: .25em;
     background-color: #c8d8e0;
     float: left;
@@ -81,7 +81,7 @@ font-size: 1em;
   }
   #reRoll{
     display: block;
-    padding: 1em;
+    padding: .75em;
     margin: .25em;
     float: right;
     font-size: 1em;
