@@ -2,6 +2,18 @@ body {
   background-color: #455c66;
 }
 
+#logo{
+  color: rgb(19, 19, 19);
+  font-size: 1.25em;
+  margin-bottom: .25em;
+}
+#logoCont{
+  margin-left: 0;
+}
+#logoBanner{
+  margin: .5em 0 1em .25em;
+}
+
 .resultHeader {
 display: none;
 }
@@ -14,9 +26,13 @@ display: none;
   display: none;
 }
 
+.visible {
+  display: inline;
+}
+
 .jumbotron{
     margin: auto;
-    margin-top: 10%;
+    /* margin-top: 5%; */
 }
 
 #resLinks{
@@ -50,14 +66,23 @@ left: 100px;
 @media screen and (max-width: 500px) {
   .jumbotron{
     width: 100%;
-    margin: 20% 0 20% 0;
+    margin: 5% 0 10% 0;
     padding: 1em 1em 0 1em;
     height: 100%;
   }
+
   #titleBanner{
     padding: 1em;
     height: 13em;
   }
+  #logoCont{
+  margin-left: 0;
+}
+#logoBanner{
+  margin: .75em 0 1.25em 0em;
+}
+
+  
   #bottomTxtAndButton{
     padding: 1em;
   }
@@ -107,6 +132,9 @@ font-size: 1em;
     top: -2em;
     margin: .25em;
 
+   }
+   li {
+     font-size: .8em;
    }
   #map{
     width: 100%;

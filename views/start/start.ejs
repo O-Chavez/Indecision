@@ -10,12 +10,26 @@
     <div class="container-fluid" id="mainCard">
 
       <div id="startingHeader">
+        <!-- alert banner for 'nothing added to list to decide between' -->
+        <div id='alertBanner' class="alert alert-dark alert-dismissible fade show hidden" role="alert">
+          <strong>Nothing to decide between!</strong> Make sure to add things to the decsion list before moving on!.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span id="1" aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <h1 class="display-4">Let's get Started!</h1>
         <p class="lead">Enter the places you are deciding between below...</p>
       </div>
 
 
       <div id="result" class="resultHeader">
+        <!-- alert banner for nothing left to remove -->
+        <div id='resultBanner' class="alert alert-primary alert-dismissible fade show hidden" role="alert">
+          <strong>Holy guacamole!</strong> There's nothing left to remove!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div class="row">
           <div class="col-12">
             <h1 id="resultTitle">Looks like its </h1>
@@ -117,7 +131,12 @@ $('button[id=button-addon1]').click(function(){
     // make search bbar and button invisible
     $("div[id='searchBar']").toggleClass("hidden")
     } else {
-      alert('BRRRRAANNG. Ya goota put more things in the jimmy jam.')
+      // flash alert banner
+      $("div[id='alertBanner']").toggleClass('hidden');
+      $("span[id='1']").click(function(){
+      location.reload(true) 
+    })
+      // alert('BRRRRAANNG. Ya goota put more things in the jimmy jam.')
     }
       
 
@@ -129,11 +148,13 @@ $('button[id=button-addon1]').click(function(){
 $('a[id="reRoll"]').click(function(){
   // remove the index of the decison list previously rolled
   if(data.length <= 1){
-      alert("nothin left to remove!")
+    $("div[id='resultBanner']").toggleClass('hidden')
+    $("span[id='2']").click(function(){
+      location.reload(true) 
+    })
     } else {
     // take out skipped index
     data.splice(randomNum, 1);
-  console.log(data)
   // randomly select another item from the updated list
   randomNum = Math.floor(Math.random()* data.length)
 
