@@ -52,36 +52,61 @@
         </div>
       </div>
     
-      
-    
     <hr class="my-4">
-      <div class="row">
-        <div class="col-12">
+
+      <div id="searchDiv" class="row">
+        <div class="col-8">
           <div class="input-group mb-3" id="searchBar">
-      <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1" >Let's Decide!</button>
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
+            <div id="input-group" class="input-group-append">
+              <input id="searchBarInput" type="text" name="places" class="form-control" placeholder="Sushi" aria-label="Example text with button addon" aria-describedby="button-addon1" maxlength="40">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
+            </div>
+         </div>
+         </div>
+         
+        
+        
       </div>
-        <input type="text" name="places" class="form-control" placeholder="Sushi, tacos, burgers..." aria-label="Example text with button addon" aria-describedby="button-addon1" maxlength="40">
-    </div>
+      <div id="goDiv" class="row">
+        <div class="col-6">
+          <button id="decideBtn" class="btn btn-primary" type="button" id="button-addon1">Let's Decide!</button>
         </div>
       </div>
-    
-    
     <!-- list for visible choices -->
       
     <ul>
     </ul>
     <div>
     </div>
-    <div id="bottomText" class="col-12">
+    <div id="bottomTextDiv" class="row">
+      <div  class="col-10">
           <p>Let the machine monkeys make that hard decision easy for you...</p>
     </div>
+    </div>
+    
 </div>
 
 </div>
 
 <script>
+
+var delay = 1500;
+var vals = ['Tacos', 'Burrito', 'Burgers', 'Nachos', 'Thai Food', 'Italian', 'Chinese Food'];
+var input = document.getElementById('searchBarInput');
+
+for (var i = 0; i < vals.length; i++) {
+    set(vals[i], i * delay);
+}
+
+function set(v, d) {
+    setTimeout(function () {
+        setInterval(function () {
+            input.setAttribute('placeholder', v);            
+        }, delay * vals.length);
+    }, d);
+}
+
+
   var randomNum = []
   var data = []
 // add item to decison list from input
@@ -107,7 +132,7 @@ $('button[id=button-addon2]').click(function(){
 var result = [];
 
 // LETS DECIDE button --- on button click, generate random number with a max of data.length and render it as an index of the origional data
-$('button[id=button-addon1]').click(function(){
+$('button[id=decideBtn]').click(function(){
       randomNum = Math.floor(Math.random()* data.length)
       // alert(data[randomNum])
       result = data[randomNum]
@@ -134,7 +159,6 @@ $('button[id=button-addon1]').click(function(){
       $("span[id='1']").click(function(){
       location.reload(true) 
     })
-      // alert('BRRRRAANNG. Ya goota put more things in the jimmy jam.')
     }
       
 

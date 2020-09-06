@@ -6,20 +6,26 @@ body {
 
 #logo{
   color: rgb(19, 19, 19);
-  font-size: 1.25em;
+  font-size: 1em;
   float: left;
-  /* margin-bottom: 1em; */
-  /* padding: 3em; */
+  text-decoration: underline;
 }
-#logoCont{
-  /* display: flex; */
-  margin-bottom: 1em;
-  padding-top: 1em;  
-  /* justify-content: space-around; */
+#home{
+  color: rgb(19, 19, 19);
+  font-size: 1em;
+  float: right;  
+  text-decoration: underline;
 
 }
+#logoCont{
+  margin: .5em 0 2em 0;
+  padding-top: .5em;  
+  padding-bottom: .5em;  
+  background-color: #618391;
+  box-shadow: 3px 3px 5px black;
+}
 #logoBanner{
-  float: left;;
+  float: left;
 }
 
 .resultHeader {
@@ -39,13 +45,49 @@ display: none;
 }
 
 .jumbotron{
-    margin: auto;
+    margin: 2em auto auto auto;
 }
 
 #resLinks{
 display: flex;
 align-items: left;
 justify-content: space-around;
+padding: .5em 1em .5em 1em; 
+} 
+
+#go{
+  background-color: #c8d8e0 ;
+      padding: .5em 1em .5em 1em;
+      box-shadow: 3px 3px 5px grey;
+}
+#reRoll{
+  background-color: #c8d8e0 ;
+      padding: .5em 1em .5em 1em;
+      box-shadow: 3px 3px 5px grey;
+}
+#searchDiv{
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1em;
+}
+#goDiv{
+  justify-content: center;
+  height: 3em;
+}
+#decideBtn{
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  box-shadow: 3px 3px 5px grey;
+}
+#bottomTextDiv{
+  justify-content: center;
+  margin: 0;
+  padding-top: 1em;
+}
+
+#input-group{
+  width: 100%;
 }
 
 .card-link{
