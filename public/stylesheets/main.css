@@ -63,7 +63,7 @@ left: 100px;
   border-radius: 0;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .jumbotron{
     width: 100%;
     margin: 5% 0 10% 0;
@@ -148,7 +148,7 @@ font-size: 1em;
     padding: 1.25em;
     margin: 3em 1em 3em 1em;  
   }
-}
+} */
 
 
 
