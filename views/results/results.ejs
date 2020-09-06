@@ -10,86 +10,57 @@
       height: 100%;
       width: 100%; 
       border: #c8d8e0 solid;
-
     }
-    #logoBanner{
-    display: none;
-  }
-  #logo{
-     display: none;
-  }
-
-    #goBackBtn{
-      /* justify-items: center; */
-      
-      /* margin: .5em; */
-     
+    #logoCont{
+      display: none;
+      margin-bottom: 1em;
+      padding-top: 1em;
+    }
+    #logoCont1{
+      margin-bottom: 1em;
+      padding-top: 1em;
     }
     #homeLink{
       background-color: #c8d8e0 ;
       padding: .5em 1em .5em 1em;
-
     }
-
-
     a{
       float: right;
-      /* margin-right: 1em; */
     }
-    
-      #map-jumbotron {
-        width: 100%;
-        height: 100%;
-        margin: 1em auto 1em auto;
-        /* padding: auto */
+    #map-jumbotron {
+      width: 100%;
+      height: 100%;
+      margin: 1em auto 1em auto;
+    }
+    .mapDiv{
+      height: 100%;
+      height: 20em;
+    }
+    .title{
+      height: 100%;
       }
-
-      .mapDiv{
-        height: 100%;
-        height: 20em;
-        /* top: -4em; */
-        /* padding: none; */
-      }
-
-      .title{
-        height: 100%;
-        }
-
-      .results{
-        margin: 1em;
-        /* border: #c8d8e0 solid; */
-      }
-
-      h2 {
-        /* padding: .25em;
-        margin: 0;
-        border-bottom-width: 0;
-        background-color:#f2f2f2;
-        border-radius: 5px;
-        text-align: center; */
-      }
-
-      ul {
-        font-size: small;
-        list-style-type: none;
-        padding: .75em .25em .75em .25em;
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-        border-radius: 5px;
-      } 
-      li:nth-child(odd) {background-color: #f2f2f2;}
-
-
-      li {
-        padding: 1em;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-        border-radius: 5px;
-      }
+    .results{
+      margin: 1em;
+    }
+    ul {
+      font-size: small;
+      list-style-type: none;
+      padding: .75em .25em .75em .25em;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      border-radius: 5px;
+    } 
+    li:nth-child(odd) {background-color: #f2f2f2;}
+    li {
+      padding: 1em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
 
 
 
@@ -196,9 +167,19 @@
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVTONnjQDRFUmOBIVDA7306DTuTWPJfAw&callback=initMap&libraries=places&v=weekly"
  async
 ></script>
-<div class="container-fluid">
+<div id="logoCont1" class="container-fluid row-lg-12 col-md-8">
+  <!-- <div class="container-fluid col-8"> -->
+    <div class="row">
+      <div class="col-8" id="logoBanner">
+        <a id="logo" href="/">Indecision</a>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+  <div class="containter-fluid col-12">
 
-  <div id="map-jumbotron" class="jumbotron col-lg-8 col-sm-12 ">
+  
+  <div id="map-jumbotron" class="jumbotron col-lg-8 ">
 
     <div class="row title">
       <div class="col-8">
@@ -234,7 +215,6 @@
 
 </div>
 
-
-
+</div>
 </body>
 </html>

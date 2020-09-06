@@ -6,10 +6,9 @@
 
 
 <div class="container-fluid row-lg-12 col-lg-8 col-sm-12">
-  <div  class="jumbotron col-lg-8 col-sm-12 ">
-    <div class="container-fluid" id="mainCard">
-
-      <div id="startingHeader">
+  <div  class="jumbotron col-md-8">
+    <div class="row">
+      <div class="col-12" id="startingHeader">
         <!-- alert banner for 'nothing added to list to decide between' -->
         <div id='alertBanner' class="alert alert-dark alert-dismissible fade show hidden" role="alert">
           <strong>Nothing to decide between!</strong> Make sure to add things to the decsion list before moving on!.
@@ -22,7 +21,7 @@
       </div>
 
 
-      <div id="result" class="resultHeader">
+      <div id="result" class="col-12 resultHeader">
         <!-- alert banner for nothing left to remove -->
         <div id='resultBanner' class="alert alert-primary alert-dismissible fade show hidden" role="alert">
           There's nothing left to remove!
@@ -37,47 +36,46 @@
           <p class="card-text">We can always count this one out and go again...</p>
           <hr>
           </div>
-          
-
-          <!-- send result as a string to google maps api with yelp and display results. -->
-          
+    </div>      
           <!-- remove selected item from the array and re run -->
+        <div class="row">
           <div class="resultLinks col-12" id="resLinks">
             <form action="/results" id="goForm" method="POST">
               <input type="hidden" id="answer" name="choice" value="">
               <!-- <input type="submit" id="go" class="btn btn-secondary"> -->
               <a href="#" id="go" class="card-link">Get directions</a>
               <a href="#"  id="reRoll" class="card-link">Lets try again...</a>
-
             </form>
-            
           </div>
-        
         </div>
-        
-  
+          
+        </div>
       </div>
     
+      
+    
     <hr class="my-4">
-
-    <div class="input-group mb-3" id="searchBar">
+      <div class="row">
+        <div class="col-12">
+          <div class="input-group mb-3" id="searchBar">
       <div class="input-group-prepend">
         <button class="btn btn-outline-secondary" type="button" id="button-addon1" >Let's Decide!</button>
         <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
       </div>
         <input type="text" name="places" class="form-control" placeholder="Sushi, tacos, burgers..." aria-label="Example text with button addon" aria-describedby="button-addon1" maxlength="40">
     </div>
+        </div>
+      </div>
+    
     
     <!-- list for visible choices -->
-
+      
     <ul>
     </ul>
     <div>
     </div>
     <div id="bottomText" class="col-12">
           <p>Let the machine monkeys make that hard decision easy for you...</p>
-    </div>
-
     </div>
 </div>
 
