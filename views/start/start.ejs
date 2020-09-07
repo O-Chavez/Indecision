@@ -87,21 +87,69 @@
 
 <script>
 
-var delay = 1500;
-var vals = ['Tacos', 'Burrito', 'Burgers', 'Nachos', 'Thai Food', 'Italian', 'Chinese Food'];
+
+var vals = ['Tacos', 'Burrito', 'Burgers', 'Nachos', 'Italian', 'Chinese Food'];
+var keyframes = [vals[0]];
+
+// generate keyframes
+var count = 0;
+while (count < vals.length) {
+  last_frame = keyframes[keyframes.length - 1];
+  if (vals[(count + 1) % vals.length] == last_frame) { // if the keyframe is the current string
+    count++;
+  } else if (vals[(count + 1) % vals.length].lastIndexOf(last_frame, 0) === 0) { // if the current keyframe is part of the desired goal
+    keyframes.push(last_frame + vals[(count + 1) % vals.length][last_frame.length]);
+  } else { // delete from keyframe
+    keyframes.push(last_frame.substring(0, last_frame.length - 1));
+  }
+}
+
 var input = document.getElementById('searchBarInput');
 
-for (var i = 0; i < vals.length; i++) {
-    set(vals[i], i * delay);
+function ph_add(i) {
+  setTimeout(function() {
+    input.setAttribute('placeholder', keyframes[i]);
+    if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
+      ph_add((i + 1) % keyframes.length);
+    } else {
+      setTimeout(function() {
+        ph_del((i + 1) % keyframes.length);
+      }, 2500)
+    }
+  }, 110 + 60 * Math.random());
 }
 
-function set(v, d) {
-    setTimeout(function () {
-        setInterval(function () {
-            input.setAttribute('placeholder', v);            
-        }, delay * vals.length);
-    }, d);
+function ph_del(i) {
+  setTimeout(function() {
+    input.setAttribute('placeholder', keyframes[i]);
+    if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
+      ph_add((i + 1) % keyframes.length);
+    } else {
+      ph_del((i + 1) % keyframes.length);
+    }
+  }, 65);
 }
+
+ph_add(0);
+
+
+
+
+// var delay = 1000;
+// var vals = ['Tacos', 'Burrito', 'Burgers', 'Nachos', 'Italian', 'Chinese Food'];
+// var input = document.getElementById('searchBarInput');
+
+// for (var i = 0; i < vals.length; i++) {
+//     set(vals[i], i * delay);
+// }
+
+// function set(v, d) {
+//     setTimeout(function () {
+//         setInterval(function () {
+//             input.setAttribute('placeholder', v);            
+//         }, delay * vals.length);
+//     }, d);
+// }
 
 
   var randomNum = []
