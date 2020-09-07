@@ -144,8 +144,11 @@ padding: .5em 1em .5em 1em;
 }
 
 #input-group{
+  display: auto;
   width: 100%;
   box-shadow: 3px 3px 5px grey;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .card-link{
