@@ -122,7 +122,6 @@
         service = new google.maps.places.PlacesService(map);
         if(request.query == false){
           $('div[id="resultsDiv"]').addClass("hidden")
-            alert("nothin good happening")
           } else {
         service.textSearch(request, (results, status) => {  
           if(results == false){
