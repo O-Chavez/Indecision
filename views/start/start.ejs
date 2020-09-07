@@ -107,12 +107,24 @@ function set(v, d) {
 // add item to decison list from input
 $("input[type='text']").keypress(function(event){
   if(event.which === 13 ){
+    
+    if($("input[type='text']").val() == false){
+
+document.querySelector("#searchBarInput").classList.add('shakeyShakey');
+// if shake class is active, remove it after 500ms
+setTimeout(function(){document.querySelector("#searchBarInput").classList.remove('shakeyShakey')},500);
+
+
+} else {
+
     var decisionList = $(this).val();
     // add item as an li
     $(this).val("");
     $("ul").append("<li>" + decisionList + "</li>")
     data.push(decisionList)
+    }
   }
+  
 });
 
 
