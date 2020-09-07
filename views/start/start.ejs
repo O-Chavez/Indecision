@@ -26,7 +26,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <h1 id="resultTitle">Looks like its </h1>
+            <h1 id="resultTitle">Looks like it's </h1>
           <h6 class="card-subtitle mb-2 text-muted result">Not really feeling that one?</h6>
           <p class="card-text">We can always count this one out and go again...</p>
           <hr>
@@ -68,11 +68,15 @@
         </div>
       </div>
     <!-- list for visible choices -->
-      
-    <ul>
-    </ul>
-    <div>
+    <div id="ulListRow" class="row">
+      <div class="col-10" id="ulListDiv">
+          <ul>
+          </ul>
+      </div>
     </div>
+      
+    
+    
     <div id="bottomTextDiv" class="row">
       <div  class="col-10">
           <p>Let the machine monkeys make that hard decision easy for you...</p>
@@ -155,7 +159,7 @@ $('button[id=decideBtn]').click(function(){
       result = data[randomNum]
 
       // remove the ul from view
-      $("ul").addClass("ulList")
+      $("ul").addClass("hidden")
 
       if(data.length >= 1){
         // add the result to the result card
@@ -168,8 +172,9 @@ $('button[id=decideBtn]').click(function(){
 
     // make innitial title card invisible
     $("div[id='startingHeader']").toggleClass("hidden")
-    // make search bbar and button invisible
+    // make search bar and button invisible
     $("div[id='searchBar']").toggleClass("hidden")
+    $("div[id='goDiv']").toggleClass("hidden")
     } else {
       // flash alert banner
       $("div[id='alertBanner']").toggleClass('hidden');
@@ -199,7 +204,7 @@ $('a[id="reRoll"]').click(function(){
   // clear previous displayed result
       $("h1[id='resultTitle']").empty()
   // upadte rsult card
-    $("h1[id='resultTitle']").prepend(result + "!");
+    $("h1[id='resultTitle']").prepend("Looks like it's " + result + "!");
     // give the a tag in the main form the value of the result
 
 

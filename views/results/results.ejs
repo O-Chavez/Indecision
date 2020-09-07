@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Indecision</title>
-
   <style>
     #map{
       height: 100%;
@@ -69,15 +68,10 @@
       height: 100%;
       border-radius: 5px;
     }
-
-
-
   </style>
 </head>
 <body>
   <%- include("../partials/header") %> 
-
- 
   <script>
     "use strict";
       let map;
@@ -85,12 +79,10 @@
       let infowindow;
     var pos;
 
-    
   function initMap() {
     let answer = document.getElementById('result').innerHTML;   
     
         infowindow = new google.maps.InfoWindow();
-        // -----------------------------------------
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             position => {
@@ -128,10 +120,7 @@
             document.getElementById('h1Header').innerHTML = "No results for (" + request.query + "). Try searching again!"
             $('div[id="resultsDiv"]').addClass("hidden")
 
-          } else {
-
-          
-            
+          } else {  
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (let i = 0; i < 5; i++) {
               const placesList = document.getElementById("places");
@@ -145,8 +134,8 @@
               button.innerHTML="More Info"
               placesList.appendChild(li);
               createMarker(results[i]);
+              }
             }
-          }
           }
         });
       }
@@ -163,7 +152,7 @@
           map,
           position: place.geometry.location
         });
-        marker.addListener("click", function() {
+        marker.addListener("mouseover", function() {
         var inforwindow = new google.maps.InfoWindow({
         })
           var directionLink = "https://www.google.com/maps/search/?api=1&query=";
@@ -178,17 +167,16 @@
  async
 ></script>
 <div id="logoCont1" class="container-fluid row-12 col-12">
-  <div class="container-fluid col-6">
+  <div class="container-fluid col-md-6">
     <div class="row">
       <div class="col-8" id="logoBanner">
-        <a id="logo" href="/">Indecision</a>
+        <a id="logo" href="/">Indecision <i class="fab fa-get-pocket"></i></a>
       </div>
       <div class="col-4">
         <a id="home" href="/start">Home</a>
       </div>
     </div>
   </div>
-    
 </div>
   <div class="containter-fluid col-12">
 
