@@ -64,8 +64,9 @@ ul {
 }
 
 .jumbotron{
+  z-index: 1;
     margin: 2em auto auto auto;
-    /* opacity: .99; */
+    opacity: .94;
     box-shadow: 2px 2px 10px black;
 }
 
