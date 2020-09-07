@@ -120,6 +120,9 @@ $('button[id=button-addon2]').click(function(){
   if($("input[type='text']").val() == false){
 
     document.querySelector("#searchBarInput").classList.add('shakeyShakey');
+    // if shake class is active, remove it after 500ms
+    setTimeout(function(){document.querySelector("#searchBarInput").classList.remove('shakeyShakey')},1000);
+    
 
     } else {
       var decisionList = $("input[type='text']").val();
@@ -137,7 +140,6 @@ var result = [];
 // LETS DECIDE button --- on button click, generate random number with a max of data.length and render it as an index of the origional data
 $('button[id=decideBtn]').click(function(){
       randomNum = Math.floor(Math.random()* data.length)
-      // alert(data[randomNum])
       result = data[randomNum]
 
       // remove the ul from view
@@ -163,12 +165,7 @@ $('button[id=decideBtn]').click(function(){
       location.reload(true) 
     })
     }
-      
-
-
 });
-
-
 
 $('a[id="reRoll"]').click(function(){
   // remove the index of the decison list previously rolled
@@ -199,8 +196,6 @@ $('a[id="reRoll"]').click(function(){
       $("h6[class='card-subtitle mb-2 text-muted']").append("Nothin left to remove!");
     }  
     }
-
-   
 
 })
  document.getElementById("go").onclick = function() {
