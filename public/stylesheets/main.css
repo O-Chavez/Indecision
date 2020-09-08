@@ -1,3 +1,14 @@
+/* @media only screen and (min-width: 900px) {
+  ul{
+  -moz-column-count: 1;
+  -moz-column-gap: .5em;
+  -webkit-column-count: 1;
+  -webkit-column-gap: .25em;
+  column-count: 1;
+  column-gap: .25em;
+  }
+} */
+
 body {
   display: flexbox;
   align-items: center;
@@ -5,8 +16,7 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  
+  background-size: cover; 
 }
 
 #logo{
@@ -38,11 +48,25 @@ body {
 display: none;
 }
 .card{
-  /* padding-top: 1em; */
+  padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
   box-shadow: 3px 3px 5px grey;
+  overflow-x: scroll;
 }
+
+
+
+.card-title{
+  font-size: inherit;
+}
+
+
+
+
+
+
+
 #resCards{
   -moz-column-count: 2;
   -moz-column-gap: .5em;
@@ -50,6 +74,23 @@ display: none;
   -webkit-column-gap: .25em;
   column-count: 2;
   column-gap: .25em;
+}
+#resCardsDivs{
+  -moz-column-count: 2;
+  -moz-column-gap: .5em;
+  -webkit-column-count: 2;
+  -webkit-column-gap: .25em;
+  column-count: 2;
+  column-gap: .25em;
+  display: block;
+  break-inside: avoid-column;
+  justify-content: center;
+  float: right;
+}
+
+#cardImg{
+  max-height: 15em;
+  width: auto/9;
 }
 
 ul {
@@ -59,12 +100,18 @@ ul {
   -webkit-column-gap: .25em;
   column-count: 2;
   column-gap: .25em;
+
+  -webkit-column-width: 275px;
+  -moz-column-width: 275px;
+  column-width: 275px;
 }
+
 li{
   display: block;
   break-inside: avoid-column;
   justify-content: center;
 }
+
 
 #ulListDiv{
   margin-top: 2em;

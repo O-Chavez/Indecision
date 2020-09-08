@@ -124,39 +124,27 @@
 
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (let i = 0; i < 5; i++) {
-              console.log(results[i])
-
               // const placesList = document.getElementById("places");
               // const li = document.createElement("li");
               const resultCont = document.getElementById('resCards');
               
               const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
 
-
               // add name, rating and info link to each li
               const resultsCards = `
               <li>
-              <div class="card" style="width: 18rem">
-                <img src="${results[i].photos[0].getUrl({'maxWidth': 500, 'maxHeight': 300})}" class="card-img-top" alt="...">
+              <div class="card col-12">
+                <img id="cardImg" src="${results[i].photos[0].getUrl()}" class="card-img-top" alt="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
                 <div class="card-body">
                   <h5 class="card-title">${results[i].name}</h5>
                   <p class="card-text">$ ${results[i].price_level}/5</p>
                   <p class="card-text">Rating: ${results[i].rating} </p>
-                  <a href="${placeUrl}" target="_blank" class="btn btn-primary">Get More Info!</a>
+                  <a id="resCardLink" href="${placeUrl}" target="_blank" class="btn btn-primary">Get More Info!</a>
                 </div>
               </div>
-              </li>
+            </li>
             `;
             resultCont.innerHTML += resultsCards;
-
-
-              // li.textContent =" - " + results[i].rating + " - " + results[i].name;
-              // var button = document.createElement("a")
-              // button.setAttribute('href',"https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name))
-              // button.setAttribute('target',"_blank")
-              // li.appendChild(button);
-              // button.innerHTML="More Info"
-              // placesList.appendChild(li);
               createMarker(results[i]);
               }
             }
@@ -204,7 +192,7 @@
 </div>
   <div class="containter-fluid col-12">
 
-  <div id="map-jumbotron" class="jumbotron col-lg-8 ">
+  <div id="map-jumbotron" class="jumbotron col-md-8 ">
 
     <div class="row title">
       <div class="col-8">
@@ -224,10 +212,10 @@
     </div>
       <hr>
       <div id="resultsDiv" class="row results">
-        <div class="col-12 ">
+        <div class="col-12">
         <div id="right-panel">
           <h2>Top Results for "<%= answer %>"!</h2>
-          <div id="" class="col-12">
+          <div id="resCardsDiv" class="col-12">
             <ul id="resCards"></ul>
           </div>
           
