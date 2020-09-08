@@ -197,15 +197,17 @@ padding: .5em 1em .5em 1em;
   height: 3em;
   padding-top: 1em;
 }
+
 #decideBtn{
   width: 100%;
   height: 100%;
   justify-content: center;
   box-shadow: 3px 3px 5px grey;
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
   margin: auto;
 }
+
 #bottomTextDiv{
   justify-content: center;
   margin: 0;
