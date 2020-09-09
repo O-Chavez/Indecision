@@ -69,8 +69,11 @@
       </div>
     <!-- list for visible choices -->
     <div id="ulListRow" class="row">
-      <div class="col-10" id="ulListDiv">
-          <ul>
+      <div class="col-10 list-group" id="ulListDiv">
+          <ul id="startUl">
+            <hr>
+            <li>Decision List</li>
+            <hr>
           </ul>
       </div>
     </div>
@@ -150,12 +153,22 @@ setTimeout(function(){document.querySelector("#searchBarInput").classList.remove
     var decisionList = $(this).val();
     // add item as an li
     $(this).val("");
-    $("ul").append("<li>" + decisionList + "</li>")
+    // decide if i want to add a div with an li inside (for spacing) or visa vera
+
+
+    $("ul[id='startUl']").append("<li id='ulLis' class='col-9 alert alert-dark alert-dismissible fade show'>" + decisionList + "</li>")
+  //   $("ul[id='startUl']").append("<li id='ulLis' class='col-6'>" + "<div id='ahhh' class=' alert alert-primary alert-dismissible fade show' role='alert'>" +
+  // "<strong>" + decisionList + "</strong> added to the list!" +
+  // "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+  //   "<span aria-hidden='true'>&times;</span>" +
+  // "</button></div>" + "</li>")
     data.push(decisionList)
     }
   }
   
 });
+
+$("")
 
 
 $('button[id=button-addon2]').click(function(){
