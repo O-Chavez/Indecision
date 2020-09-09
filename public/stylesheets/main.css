@@ -242,8 +242,8 @@ padding: .5em 1em .5em 1em;
   height: 100%;
   justify-content: center;
   box-shadow: 3px 3px 5px grey;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1.1em;
+  padding-bottom: 1.1em;
   margin: auto;
 }
 #bottomTextDiv{
