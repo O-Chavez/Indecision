@@ -1,13 +1,3 @@
-/* @media only screen and (min-width: 900px) {
-  ul{
-  -moz-column-count: 1;
-  -moz-column-gap: .5em;
-  -webkit-column-count: 1;
-  -webkit-column-gap: .25em;
-  column-count: 1;
-  column-gap: .25em;
-  }
-} */
 
 body {
   font-family: 'EB Garamond', serif;
@@ -61,12 +51,6 @@ display: none;
 .card-title{
   font-size: inherit;
 }
-
-
-
-
-
-
 
 #resCards{
   -moz-column-count: 2;
@@ -155,10 +139,6 @@ h2{
   width: 33%;
   float: left;
   margin: 1em;
-
-  /* -webkit-column-width: 3em;
-  -moz-column-width: 3em;
-  column-width: 3em; */
 }
 #startUl{
   justify-content: center;
@@ -216,7 +196,6 @@ padding: .5em 1em .5em 1em;
   animation-duration: .5s;
   animation-name: shake;
 }
-
 
 @keyframes shake{ 
   0%{ 
