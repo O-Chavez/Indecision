@@ -51,26 +51,35 @@ display: none;
 .card-title{
   font-size: inherit;
 }
+#resCardLink{
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 #resCards{
+  font-size: 1.25em;
   -moz-column-count: 2;
   -moz-column-gap: .5em;
   -webkit-column-count: 2;
-  -webkit-column-gap: .25em;
-  column-count: 2;
-  column-gap: .25em;
+  -webkit-column-gap: .5em;
+  column-count: 3;
+  column-gap: .5em;
+
+  -webkit-column-width: 250px;
+  -moz-column-width: 250px;
+  column-width: 250px;
 }
 #resCardsDivs{
-  -moz-column-count: 2;
-  -moz-column-gap: .5em;
-  -webkit-column-count: 2;
-  -webkit-column-gap: .25em;
-  column-count: 2;
-  column-gap: .25em;
   display: block;
   break-inside: avoid-column;
   justify-content: center;
   float: right;
+  align-content: center ;
+
+}
+#right-panel{
+  text-align: center;
 }
 
 #cardImg{
@@ -85,10 +94,6 @@ ul {
   -webkit-column-gap: .25em;
   column-count: 2;
   column-gap: .25em;
-
-  /* -webkit-column-width: 250px;
-  -moz-column-width: 250px;
-  column-width: 250px; */
 }
 
 li{
@@ -96,6 +101,7 @@ li{
   break-inside: avoid-column;
   justify-content: center;
 }
+
 
 h1{
   font-size: 3.5em;
@@ -253,6 +259,9 @@ padding: .5em 1em .5em 1em;
   margin: 0;
   padding-top: 1em;
 }
+#bottomTxtAndButton{
+  justify-content: center;
+}
 
 
 #input-group{
@@ -273,7 +282,10 @@ justify-content: center;
 }
 
 .card-body{
-justify-content: center;}
+  width: 100%;
+  display: block;
+  justify-content: center;
+}
 
 .slideshow {
   position: fixed;
