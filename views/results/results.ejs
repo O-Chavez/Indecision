@@ -123,13 +123,14 @@
 
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (let i = 0; i < 5; i++) {
+              createMarker(results[i]);
+
               // const placesList = document.getElementById("places");
               // const li = document.createElement("li");
               const resultCont = document.getElementById('resCards');
               
               const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
 
-              createMarker(results[i]);
 
               // add name, rating and info link to each li
               const resultsCards = `
