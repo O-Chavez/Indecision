@@ -130,6 +130,8 @@
               
               const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
 
+              createMarker(results[i]);
+              
               // add name, rating and info link to each li
               const resultsCards = `
               <li>
@@ -145,7 +147,7 @@
             </li>
             `;
             resultCont.innerHTML += resultsCards;
-              createMarker(results[i]);
+              
               }
             }
           }
