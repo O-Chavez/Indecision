@@ -166,7 +166,7 @@ h2{
 
 
 #ulListDiv{
-  margin-top: 2.5em;
+  margin-top: 1em;
   padding: auto;
   justify-content: center;
 }
@@ -247,8 +247,7 @@ padding: .5em 1em .5em 1em;
 
 #goDiv{
   justify-content: center;
-  height: 3em;
-  padding-top: 1em;
+  height: 4em;
 }
 
 #decideBtn{
