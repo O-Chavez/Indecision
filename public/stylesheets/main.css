@@ -86,9 +86,9 @@ ul {
   column-count: 2;
   column-gap: .25em;
 
-  -webkit-column-width: 275px;
-  -moz-column-width: 275px;
-  column-width: 275px;
+  /* -webkit-column-width: 250px;
+  -moz-column-width: 250px;
+  column-width: 250px; */
 }
 
 li{
@@ -98,10 +98,18 @@ li{
 }
 
 h1{
+  font-size: 3.5em;
+  text-align: center;
   font-family: 'Shadows Into Light', cursive;
 }
 h2{
   font-family: 'Shadows Into Light', cursive;
+}
+h6{
+  text-align: center;
+}
+p{
+  text-align: center;
 }
 
 #ahh{
@@ -126,7 +134,7 @@ h2{
 #ulLis{
   text-align: center;
   display: flex;
-  font-size: 90%;
+  font-size: 100%;
   font-optical-sizing: auto;
 
   overflow-x: hidden;
@@ -142,6 +150,7 @@ h2{
 }
 #startUl{
   justify-content: center;
+  padding: 0;
 }
 
 
@@ -240,9 +249,11 @@ padding: .5em 1em .5em 1em;
 }
 #bottomTextDiv{
   justify-content: center;
+  text-align: center;
   margin: 0;
   padding-top: 1em;
 }
+
 
 #input-group{
   display: auto;
