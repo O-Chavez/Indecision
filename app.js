@@ -35,9 +35,6 @@ var choice = [];
       res.redirect("/results");
     })
 
-
-
-
     app.get("/results", function(req, res){
         
         res.render("results/results", {answer: answer});

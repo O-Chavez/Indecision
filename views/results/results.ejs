@@ -125,18 +125,18 @@
             for (let i = 0; i < 5; i++) {
               createMarker(results[i]);
 
-              // const placesList = document.getElementById("places");
-              // const li = document.createElement("li");
               const resultCont = document.getElementById('resCards');
               
               const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
-
 
               // add name, rating and info link to each li
               const resultsCards = `
               <li>
               <div class="card col-12">
+
+
                 <img id="cardImg" src="${results[i].photos[0].getUrl()}" class="card-img-top" alt="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+
                 <div class="card-body">
                   <h5 class="card-title">${results[i].name}</h5>
                   <p class="card-text">$ ${results[i].price_level}/5</p>
@@ -153,9 +153,7 @@
           }
         });
       }
-
-
-
+      // marker functions here
       function currentSpotMarker(props){
         var marker = new google.maps.Marker({
           postion:props.coords,
@@ -175,13 +173,9 @@
           infowindow.setContent(place.name + '</br>' + '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURI(place.name) + '"target="_blank">' + "More Info" + '</a>' );
           infowindow.open(map, marker);
         });
-      }
-
-      
+      } 
     }
-      initMap();
   </script>
-  
 
 <div id="logoCont1" class="container-fluid row-12 col-12">
   <div class="container-fluid col-lg-8 col-md-12 col-sm-12">
@@ -195,39 +189,34 @@
     </div>
   </div>
 </div>
-  <div class="containter-fluid col-12">
-
-  <div id="map-jumbotron" class="jumbotron col-md-8 ">
-
-    <div class="row title">
-      <div class="col-8">
-        <h1 id="h1Header">Nearby Results for - <%= answer %></h1>
-         <h2 style="visibility: hidden;" id="result"><%= answer %></h2>
-      </div>
-
-      <div class="col-4" id="goBackBtn">
-        <a id="homeLink" href="/start">Go Home</a>
-      </div>
-    </div>
-
-    <div class="row mapDiv">
-      <div class="col-12 ">
-            <div id="map"></div>
-      </div>
-    </div>
-      <hr>
-      <div id="resultsDiv" class="row results">
-        <div class="col-12">
-        <div id="right-panel">
-          <h2>Top Results for "<%= answer %>"!</h2>
-          <div id="resCardsDiv" class="col-12">
-            <ul id="resCards"></ul>
+<div class="containter-fluid col-12">
+      <div id="map-jumbotron" class="jumbotron col-md-8 ">
+        <div class="row title">
+          <div class="col-8">
+            <h1 id="h1Header">Nearby Results for - <%= answer %></h1>
+            <h2 style="visibility: hidden;" id="result"><%= answer %></h2>
           </div>
-          
+          <div class="col-4" id="goBackBtn">
+            <a id="homeLink" href="/start">Go Home</a>
+          </div>
+        </div>
+        <div class="row mapDiv">
+          <div class="col-12 ">
+                <div id="map"></div>
+          </div>
+        </div>
+          <hr>
+        <div id="resultsDiv" class="row results">
+          <div class="col-12">
+            <div id="right-panel">
+              <h2>Top Results for "<%= answer %>"!</h2>
+              <div id="resCardsDiv" class="col-12">
+                <ul id="resCards"></ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-  </div>
 </div>
 </div>
 </body>

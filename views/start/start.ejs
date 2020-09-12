@@ -15,7 +15,6 @@
         <p class="lead">Enter the places you are deciding between below...</p>
       </div>
 
-
       <div id="result" class="col-12 resultHeader">
         <!-- alert banner for nothing left to remove -->
         <div id='resultBanner' class="alert alert-primary alert-dismissible fade show hidden" role="alert">
@@ -26,7 +25,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <h1 id="resultTitle">Looks like it's </h1>
+            <h1 id="resultTitle">Looks like we're getting </h1>
           <h6 class="card-subtitle mb-2 text-muted result">Not really feeling that one?</h6>
           <p class="card-text">We can always count this one out and go again...</p>
           <hr>
@@ -59,8 +58,6 @@
          </div>
          </div>
          
-        
-        
       </div>
       <div id="goDiv" class="row">
         <div class="col-6">
@@ -75,13 +72,10 @@
             <p id="firstLi">Decision List</p>
             <hr>
           <ul id="startUl">
-             
           </ul>
       </div>
     </div>
       
-    
-    
     <div id="bottomTextDiv" class="row">
       <div  class="col-10">
           <p>Let the machine monkeys make that hard decision easy for you...</p>
@@ -91,7 +85,6 @@
 </div>
 
 <script>
-
 
 var vals = ['Tacos', 'Burrito', 'Burgers', 'Nachos', 'Italian', 'Chinese Food'];
 var keyframes = [vals[0]];
@@ -148,30 +141,15 @@ $("input[type='text']").keypress(function(event){
 document.querySelector("#searchBarInput").classList.add('shakeyShakey');
 // if shake class is active, remove it after 500ms
 setTimeout(function(){document.querySelector("#searchBarInput").classList.remove('shakeyShakey')},500);
-
-
 } else {
-
     var decisionList = $(this).val();
     // add item as an li
     $(this).val("");
-    // decide if i want to add a div with an li inside (for spacing) or visa vera
-
-
     $("ul[id='startUl']").append("<li id='ulLis' class='col-9 alert alert-dark alert-dismissible fade show'>" + decisionList + "</li>")
-  //   $("ul[id='startUl']").append("<li id='ulLis' class='col-6'>" + "<div id='ahhh' class=' alert alert-primary alert-dismissible fade show' role='alert'>" +
-  // "<strong>" + decisionList + "</strong> added to the list!" +
-  // "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
-  //   "<span aria-hidden='true'>&times;</span>" +
-  // "</button></div>" + "</li>")
     data.push(decisionList)
     }
   }
-  
 });
-
-$("")
-
 
 $('button[id=button-addon2]').click(function(){
   if($("input[type='text']").val() == false){
@@ -180,7 +158,6 @@ $('button[id=button-addon2]').click(function(){
     // if shake class is active, remove it after 500ms
     setTimeout(function(){document.querySelector("#searchBarInput").classList.remove('shakeyShakey')},500);
     
-
     } else {
       var decisionList = $("input[type='text']").val();
     // add item as an li
@@ -188,8 +165,6 @@ $('button[id=button-addon2]').click(function(){
     $("ul").append("<li>" + decisionList + "</li>")
     data.push(decisionList)
     }
-  
-  
 })
 
 var result = [];
@@ -245,22 +220,18 @@ $('a[id="reRoll"]').click(function(){
 
   // clear previous displayed result
       $("h1[id='resultTitle']").empty()
-  // upadte rsult card
-    $("h1[id='resultTitle']").prepend("Looks like it's " + result + "!");
+  // update rsult card
+    $("h1[id='resultTitle']").prepend("Looks like we're getting " + result + "!");
     // give the a tag in the main form the value of the result
-
 
     if(data.length <= 1){
       $("h6[class='card-subtitle mb-2 text-muted']").empty("");
       $("h6[class='card-subtitle mb-2 text-muted']").append("Nothin left to remove!");
     }  
     }
-
 })
  document.getElementById("go").onclick = function() {
     document.getElementById("goForm").submit();
 }
-
 </script>
-
 <%- include("../partials/footer") %> 
