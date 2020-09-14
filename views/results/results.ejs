@@ -8,9 +8,30 @@
       let infowindow;
     var pos;
 
+    // marker functions here
+    function currentSpotMarker(props){
+        var marker = new google.maps.Marker({
+          postion:props.coords,
+          map:map,
+          icon:props.iconImage
+        })
+      }
+      function createMarker(place) {
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location
+        });
+        marker.addListener("mouseover", function() {
+        var inforwindow = new google.maps.InfoWindow({
+        })
+          var directionLink = "https://www.google.com/maps/search/?api=1&query=";
+          infowindow.setContent(place.name + '</br>' + '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURI(place.name) + '"target="_blank">' + "More Info" + '</a>' );
+          infowindow.open(map, marker);
+        });
+      } 
+
   function initMap() {
     let answer = document.getElementById('result').innerHTML;   
-    
         infowindow = new google.maps.InfoWindow();
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
@@ -48,18 +69,12 @@
           if(results == false){
             document.getElementById('h1Header').innerHTML = "No results for (" + request.query + "). Try searching again!"
             $('div[id="resultsDiv"]').addClass("hidden")
-
           } else {  
-
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (let i = 0; i < 5; i++) {
-
               createMarker(results[i]);
-
               const resultCont = document.getElementById('resCards');
-              
               const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
-
               // add name, rating and info link to each li
               const resultsCards = 
               `
@@ -76,33 +91,11 @@
             </li>
             `;
             resultCont.innerHTML += resultsCards;
-              
               }
             }
           }
         });
       }
-      // marker functions here
-      function currentSpotMarker(props){
-        var marker = new google.maps.Marker({
-          postion:props.coords,
-          map:map,
-          icon:props.iconImage
-        })
-      }
-      function createMarker(place) {
-        const marker = new google.maps.Marker({
-          map,
-          position: place.geometry.location
-        });
-        marker.addListener("mouseover", function() {
-        var inforwindow = new google.maps.InfoWindow({
-        })
-          var directionLink = "https://www.google.com/maps/search/?api=1&query=";
-          infowindow.setContent(place.name + '</br>' + '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURI(place.name) + '"target="_blank">' + "More Info" + '</a>' );
-          infowindow.open(map, marker);
-        });
-      } 
     }
   </script>
 <div class="containter-fluid col-12">
