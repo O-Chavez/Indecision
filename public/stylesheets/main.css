@@ -67,15 +67,24 @@ display: none;
   border-radius: 5px;
   box-shadow: 3px 3px 5px grey;
 }
-#resCardsDivs{
+#resCol{
+  margin: 0;
+  padding: 0;
+}
+#resCardsDiv{
   display: block;
   break-inside: avoid-column;
   justify-content: center;
   float: right;
   align-content: center ;
+  width: 100%;
+  padding: 0;
 }
 #right-panel{
   text-align: center;
+}
+#resultsDiv{
+  margin: 0;
 }
 #cardImg{
   max-height: 15em;
