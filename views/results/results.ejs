@@ -6,19 +6,20 @@
       let map;
       let service;
       let infowindow;
-    var pos;
 
-    // marker functions here
-    function currentSpotMarker(props){
-        var marker = new google.maps.Marker({
-          postion:props.coords,
-          map:map,
-          icon:props.iconImage
-        })
-      }
+  function initMap() {
+    var infowindow = new google.maps.InfoWindow();
+    let answer = document.getElementById('result').innerHTML;   
+
+    map = new google.maps.Map(document.getElementById("map"), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 12
+          });
+
       function createMarker(place) {
         const marker = new google.maps.Marker({
           map,
+          animation: google.maps.Animation.DROP,
           position: place.geometry.location
         });
         marker.addListener("mouseover", function() {
@@ -29,54 +30,49 @@
           infowindow.open(map, marker);
         });
       } 
+      
+    var pos;
+    navigator.geolocation.getCurrentPosition(success, error);
 
-  function initMap() {
-    let answer = document.getElementById('result').innerHTML;   
-        infowindow = new google.maps.InfoWindow();
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            position => {
-              const pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
-              map.setCenter(pos);
+    function setCenterMap(){
+            // set map center and create marker
+            map.setCenter(pos);
               var CurrentPos = new google.maps.Marker({
                       position:pos,
                       map:map,
                       icon: "https://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png"
                     });
-            },
-            () => {
-              alert("Could not find current location!")
-              handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-          // ---------------------
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-        // ------------------
+          }
 
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-      // -------------------
-      
-        map = new google.maps.Map(document.getElementById("map"), {
-          center: pos,
-          zoom: 12
-        });
-        const request = {
+    function success(pos){
+      // give geolocation to variable pos
+        pos = {
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude
+              };
+              console.log("pos in success")
+              console.log(pos)
+
+      // set map center and mark with pin --- setCenterMap func not working here...?
+      map.setCenter(pos);
+        var CurrentPos = new google.maps.Marker({
+                position:pos,
+                map:map,
+                icon: "https://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png"
+              });
+      // setCenterMap(pos);
+
+      // mark locations.
+              // req props
+              const request = {
           query: answer,
           fields: ["name", "geometry"],
-          locationBias: {radius: 100, center: pos}
-        };
+          location: {lat: pos.lat, lng: pos.lng},
+          radius: 8093
+          };
+
         service = new google.maps.places.PlacesService(map);
+          // if request is blank ...
         if(request.query == false){
           $('div[id="resultsDiv"]').addClass("hidden")
           } else {
@@ -88,7 +84,6 @@
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (let i = 0; i < 5; i++) {
               createMarker(results[i]);
-              
               const resultCont = document.getElementById('resCards');
               const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
               // add name, rating and info link to each li
@@ -96,7 +91,7 @@
               `
               <li>
               <div class="card col-12">
-                <img id="cardImg" src="${results[i].photos[0].getUrl()}" class="card-img-top" alt="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+                <img id="cardImg" src="${results[i].photos[0].getUrl()}" class="card-img-top" alt=" src='https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'">
                 <div class="card-body">
                   <h5 class="card-title">${results[i].name}</h5>
                   <p class="card-text">$ ${results[i].price_level}/5</p>
@@ -109,6 +104,70 @@
             resultCont.innerHTML += resultsCards;
               }
             }
+          }
+        });
+      }
+
+      }
+      function error(err){
+        // if location not found...
+            // prompt for location if none found from device
+            let locPrompt = prompt("Please enter your zip code!");
+            // URL encode the prompt response
+            let UrlLoc = encodeURI(locPrompt);
+            // put URL encoded response into geocoding api
+            let geocodingLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + UrlLoc + "&key=AIzaSyAVTONnjQDRFUmOBIVDA7306DTuTWPJfAw";
+            // get results from geocoding api
+          $.get( geocodingLoc, function( data ) {
+              // get access to lat and lng and give it to pos variable
+              pos = data.results[0].geometry.location;
+              console.log("pos in err")
+              console.log(pos)
+
+              // console.log(pos);
+              // set map center and create marker
+              setCenterMap();
+              // create result cards
+              const request = {
+            query: answer,
+            fields: ["name", "geometry"],
+            location: {lat: pos.lat, lng: pos.lng},
+            radius: 8093,
+          };
+          service = new google.maps.places.PlacesService(map);
+          if(request.query == false){
+            $('div[id="resultsDiv"]').addClass("hidden")
+            } else {
+              service.textSearch(request, (results, status) => {
+                if(results == false){
+                  document.getElementById('h1Header').innerHTML = "No results for (" + request.query + "). Try searching again!"
+                  $('div[id="resultsDiv"]').addClass("hidden")
+                } else {  
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (let i = 0; i < 5; i++) {
+                      createMarker(results[i]);
+                      const resultCont = document.getElementById('resCards');
+                      const placeUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURI(results[i].name);
+                      // add name, rating and info link to each li
+                      const resultsCards = 
+                      `
+                      <li>
+                      <div class="card col-12">
+                        <img id="cardImg" src="${results[i].photos[0].getUrl()}" class="card-img-top" alt=" src='https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'">
+                        <div class="card-body">
+                          <h5 class="card-title">${results[i].name}</h5>
+                          <p class="card-text">$ ${results[i].price_level}/5</p>
+                          <p class="card-text">Rating: ${results[i].rating} </p>
+                          <a id="resCardLink" href="${placeUrl}" target="_blank" class="btn btn-primary">Get More Info!</a>
+                        </div>
+                      </div>
+                    </li>
+                    `;
+                    resultCont.innerHTML += resultsCards;
+                      }
+                    }
+                  }
+            });
           }
         });
       }
@@ -145,7 +204,6 @@
 </div>
 </div>
 </body>
-
 <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVTONnjQDRFUmOBIVDA7306DTuTWPJfAw&libraries=places&v=weekly&callback=initMap"
   async
