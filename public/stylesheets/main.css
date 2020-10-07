@@ -105,6 +105,7 @@ li{
 }
 h1{
   font-size: 3.5em;
+  padding-bottom: 3vh;
   text-align: center;
   font-family: 'Shadows Into Light', cursive;
 }
@@ -334,7 +335,7 @@ justify-content: center;
     opacity: 0
   }
 }
-/* Older browser support - .no-cssanimations class added by modernizr */
+/* Older browser support */
 .no-cssanimations .slideshow li {
 	opacity: 1;
 }
