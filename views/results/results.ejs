@@ -119,8 +119,11 @@
             let geocodingLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + UrlLoc + "&key=AIzaSyAVTONnjQDRFUmOBIVDA7306DTuTWPJfAw";
             // get results from geocoding api
           $.get( geocodingLoc, function( data ) {
+            console.log(data)
               // get access to lat and lng and give it to pos variable
-              pos = data.results[0].geometry.location;
+              if (data.results[0].geometry.location) {
+               pos = data.results[0].geometry.location;
+              // console.log(pos)
               // set map center and create marker
               setCenterMap();
               // create result cards
@@ -165,7 +168,11 @@
                   }
             });
           }
-        });
+        } else {
+          alert(data.error_message);
+        }
+              }
+              );
       }
     }
   </script>
