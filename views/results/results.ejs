@@ -109,11 +109,19 @@
       function error(err){
         // if location not found...
             // prompt for location if none found from device
-            let locPrompt = prompt("Please enter your zip code!");
-            // URL encode the prompt response
-            let UrlLoc = encodeURI(locPrompt);
+            let locPrompt = "";
+            while (locPrompt == null || locPrompt == ""){
+              locPrompt = prompt("Please enter your zip code!");
+            }
+          // apply response to URL encoded variable
+          let urlLoc = encodeURI(locPrompt);
+          
+          // let locPrompt = prompt("Please enter your zip code!");
+          // let urlLoc = encodeURI(locPrompt);
+          // console.log("loc:" + locPrompt);
+
             // put URL encoded response into geocoding api
-            let geocodingLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + UrlLoc + "&key=AIzaSyAVTONnjQDRFUmOBIVDA7306DTuTWPJfAw";
+            let geocodingLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + urlLoc + "&key=AIzaSyAVTONnjQDRFUmOBIVDA7306DTuTWPJfAw";
             // get results from geocoding api
           $.get( geocodingLoc, function( data ) {
               // get access to lat and lng and give it to pos variable
