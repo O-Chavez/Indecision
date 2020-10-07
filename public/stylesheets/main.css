@@ -245,6 +245,14 @@ padding: .5em 1em .5em 1em;
   padding-top: 1em;
 }
 #bottomTxtAndButton{
+  display: flex;
+  justify-content: center;
+
+}
+
+#getStarted{
+  justify-self: center;
+  display: flex;
   justify-content: center;
 }
 #input-group{
